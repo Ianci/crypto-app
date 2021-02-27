@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 const back_arrow = require("../assets/icons/back_arrow.png");
 const home = require("../assets/icons/home.png");
 const line_graph = require("../assets/icons/line_graph.png");
@@ -19,5 +20,5 @@ export default {
     right_arrow,
     settings,
     star,
-    transaction
+    transaction,
 }

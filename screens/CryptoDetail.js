@@ -1,9 +1,10 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
     StyleSheet,
     View,
     Text,
-    TouchableOpacity
+    TouchableOpacity,
 } from 'react-native';
 
 const CryptoDetail = ({ navigation }) => {
@@ -11,7 +12,7 @@ const CryptoDetail = ({ navigation }) => {
         <View style={styles.container}>
             <Text>CryptoDetail</Text>
             <TouchableOpacity
-                onPress={() => navigation.navigate("Transaction")}
+                onPress={() => navigation.navigate('Transaction')}
             >
                 <Text>Navigate to Transaction</Text>
             </TouchableOpacity>
@@ -23,10 +24,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     shadow: {
-        shadowColor: "#000",
+        shadowColor: '#000',
         shadowOffset: {
             width: 0,
             height: 4,
