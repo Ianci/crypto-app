@@ -35,8 +35,12 @@ const Home = ({navigation}) => {
           style={{ marginTop: 5, width: 25, height: 25,
           }}
           />
+          <View style={{flex: 1}}>
+          <Text >{item.currency}</Text>
+          <Text >{item.code}</Text>
+          </View>
         </View>
-        
+
       </TouchableOpacity>
     );
 
