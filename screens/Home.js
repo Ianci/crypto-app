@@ -1,14 +1,45 @@
+/* eslint-disable eqeqeq */
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable react/self-closing-comp */
+/* eslint-disable no-trailing-spaces */
 /* eslint-disable jsx-quotes */
 /* eslint-disable prettier/prettier */
-import React from 'react';
+import React, { useState } from 'react';
 import {StyleSheet, View, Text, TouchableOpacity, Image, ImageBackground, FlatList, ScrollView} from 'react-native';
 import { COLORS, dummyData, SIZES, FONTS, icons, images } from '../constants';
+import { trendingCurrencies } from '../constants/dummy';
 
 
 const Home = ({navigation}) => {
 
+  const [ trending, setTrending ] = useState(dummyData.trendingCurrencies);
+  
+
 
   function renderHeader(props){
+
+    const renderItem = ({item , index}) => (
+      <TouchableOpacity style={{
+        width: 180,
+        paddingVertical: SIZES.padding,
+        paddingHorizontal: SIZES.padding,
+        marginLeft: 10,
+        borderRadius: 10,
+        backgroundColor: COLORS.white,
+      }}>
+        {/*Currency*/}
+        <View>
+          <Image
+          source={item.image}
+          resizeMode="cover"
+          style={{ marginTop: 5, width: 25, height: 25,
+          }}
+          />
+        </View>
+        
+      </TouchableOpacity>
+    );
+
     return (
       <View style={styles.containerHeader}>
         <ImageBackground source={images.banner}
@@ -30,8 +61,22 @@ const Home = ({navigation}) => {
 
           <View style={styles.balanceContainer}>
             <Text style={styles.balanceText}>Your portfolio balance</Text>
-            <Text></Text>
-            <Text></Text>
+            <Text style={styles.portfolioValue}>${dummyData.portfolio.balance}</Text>
+            <Text style={styles.portfolioChanges}>{dummyData.portfolio.changes} Last 24hs.</Text>
+          </View>
+
+          {/*Trendings*/}
+
+          <View style={styles.trendingContainer}>
+            <Text style={styles.trendingText}>Trending</Text>
+            <FlatList 
+            contentContainerStyle={{marginTop: SIZES.base}}
+            data={trending}
+            renderItem={renderItem}
+            keyExtractor={item => item.id}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            />
           </View>
         </ImageBackground>
       </View>
@@ -78,8 +123,30 @@ const styles = StyleSheet.create({
   balanceText: {
     color: COLORS.white,
     fontWeight: 'bold',
-    fontFamily: 'Roboto',
+    fontFamily: 'Roboto-Bold',
     fontSize: SIZES.h3,
+    lineHeight: 22,
+  },
+  portfolioValue: {
+    color: COLORS.white,
+    fontSize: SIZES.h1,
+    lineHeight: 36,
+    fontWeight: 'bold',
+  },
+  portfolioChanges: {
+    color: COLORS.white,
+    fontSize: SIZES.body5,
+    lineHeight: 22,
+  },
+  trendingContainer: {
+    position: 'absolute',
+    bottom: '-30%',
+  },  
+  trendingText: {
+    color: COLORS.secondary,
+    fontFamily: 'Roboto-Bold', 
+    fontSize: SIZES.h2, 
+    lineHeight: 30 ,
   },
 });
 
