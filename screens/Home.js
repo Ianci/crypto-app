@@ -4,17 +4,26 @@
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable jsx-quotes */
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react';
-import {StyleSheet, View, Text, TouchableOpacity, Image, ImageBackground, FlatList, ScrollView} from 'react-native';
+
+
+
+import React, { useState, useEffect } from 'react';
+import {StyleSheet, View, Text, TouchableOpacity, LogBox, Image, ImageBackground, FlatList, ScrollView} from 'react-native';
 import PriceAlert from '../components/PriceAlert';
 import { COLORS, dummyData, SIZES, FONTS, icons, images, SHADOWS } from '../constants';
-import { trendingCurrencies } from '../constants/dummy';
+import TransactionHistoryComponent  from '../components/TransactionHistory'
 
 
 const Home = ({navigation}) => {
 
-  const [ trending, setTrending ] = useState(dummyData.trendingCurrencies);
   
+  const [ trending, setTrending ] = useState(dummyData.trendingCurrencies);
+  const [ transactionHistory, setTransanctionHistory] = useState(dummyData.transactionHistory)
+
+
+  useEffect(() => {
+    LogBox.ignoreLogs(['VirtualizedLists should never be nested'])
+  }, [])
 
 
   {/*Header Functional component*/}
@@ -30,7 +39,9 @@ const Home = ({navigation}) => {
         marginBottom: 2,
         backgroundColor: COLORS.white,
         ...SHADOWS.little,
-      }}>
+      }}
+      onPress={() => navigation.navigate('CryptoDetail', { currency: item})}
+      >
         {/*Currency*/}
         <View>
           <Image
@@ -87,7 +98,7 @@ const Home = ({navigation}) => {
             contentContainerStyle={{marginTop: SIZES.base}}
             data={trending}
             renderItem={renderItem}
-            keyExtractor={item => item.id}
+            keyExtractor={item => item.id.toString()}
             horizontal
             showsHorizontalScrollIndicator={false}
             />
@@ -119,15 +130,34 @@ const Home = ({navigation}) => {
           especially when the market is volatile. Learn how to use dollar
           cost averaging to your advantage.
         </Text>
+        <TouchableOpacity style={{marginTop: SIZES.base}}>
+          <Text style={{textDecorationLine: 'underline', ...FONTS.h3, color: COLORS.green}}>Learn more</Text>
+        </TouchableOpacity>
       </View>
     )
   }
+
+  {/*Transaciton history component*/}
+  function renderTransactionHistory(){
+    return(
+      <TransactionHistoryComponent 
+      transactionHistory={transactionHistory}
+      />
+      
+    )
+      
+  }
+
+
+
+
   return (
     <ScrollView>
       <View style={styles.container}>
         {renderHeader()}
         {renderAlert()}
         {renderNotice()}
+        {renderTransactionHistory()}
       </View>
     </ScrollView>
   );
