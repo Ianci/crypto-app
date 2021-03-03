@@ -7,7 +7,7 @@
 import React, { useState } from 'react';
 import {StyleSheet, View, Text, TouchableOpacity, Image, ImageBackground, FlatList, ScrollView} from 'react-native';
 import PriceAlert from '../components/PriceAlert';
-import { COLORS, dummyData, SIZES, FONTS, icons, images } from '../constants';
+import { COLORS, dummyData, SIZES, FONTS, icons, images, SHADOWS } from '../constants';
 import { trendingCurrencies } from '../constants/dummy';
 
 
@@ -27,18 +27,19 @@ const Home = ({navigation}) => {
         paddingHorizontal: SIZES.padding,
         marginLeft: 10,
         borderRadius: 10,
+        marginBottom: 2,
         backgroundColor: COLORS.white,
-        
+        ...SHADOWS.little,
       }}>
         {/*Currency*/}
         <View>
           <Image
           source={item.image}
-          resizeMode='contain'
+          resizeMode='center'
           style={{ marginTop: 5, width: 25, height: 25,
           }}
           />
-          <View style={{flex: 1}}>
+          <View>
           <Text style={{fontSize: SIZES.h2, lineHeight: 30}}>{item.currency}</Text>
           <Text style={{color: COLORS.gray, fontSize: SIZES.body3}}>{item.code}</Text>
           </View>
@@ -111,11 +112,10 @@ const Home = ({navigation}) => {
         padding: 20,
         borderRadius: SIZES.radius,
         backgroundColor: COLORS.secondary,
-        shadowColor: '#000',
-        
+        ...SHADOWS.generic
       }}>
-        <Text>Investing safety</Text>
-        <Text>It's very difficult to time and investment,
+        <Text style={{...FONTS.body3, color: COLORS.white}}>Investing safety</Text>
+        <Text style={{...FONTS.body4, color: COLORS.white}}>It's very difficult to time and investment,
           especially when the market is volatile. Learn how to use dollar
           cost averaging to your advantage.
         </Text>

@@ -50,6 +50,39 @@ export const FONTS = {
     body5: { fontFamily: "Roboto-Regular", fontSize: SIZES.body5, lineHeight: 22 },
 };
 
-const appTheme = { COLORS, SIZES, FONTS };
+export const SHADOWS = {
+    generic: {  
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 4,
+        },
+        shadowOpacity: 0.30,
+        shadowRadius: 4.65,
+        elevation: 6
+    },
+    bold: {
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 7,
+        },
+        shadowOpacity: 0.60,
+        shadowRadius: 4.95,
+        elevation: 9
+    },
+    little: {  
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2.5,
+        },
+        shadowOpacity: 0.30,
+        shadowRadius: 4.65,
+        elevation: 3
+    },
+}
+
+const appTheme = { COLORS, SIZES, FONTS, SHADOWS };
 
 export default appTheme;

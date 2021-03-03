@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 export const portfolio = {
-    balance: "50,724.33",
+    balance: "30,724.33",
     changes: "+2.36%",
 };
 
@@ -10,7 +10,7 @@ export const trendingCurrencies = [
         currency: "Bitcoin",
         code: "BTC",
         image: require("../assets/images/bitcoin.png"),
-        amount: "29,455.74",
+        amount: "51,455.74",
         changes: "+7.24%",
         type: "I",      // I - Increased, D - Decreased
         description: "Bitcoin is a cryptocurrency invented in 2008 by an unknown person or group of people using the name Satoshi Nakamoto. The currency began use in 2009 when its implementation was released as open-source software.",
@@ -108,7 +108,7 @@ export const trendingCurrencies = [
         currency: "Ethereum",
         code: "ETH",
         image: require("../assets/images/ethereum.png"),
-        amount: "919.03",
+        amount: "1519.03",
         changes: "-0.73%",
         type: "D",
         description: "Ethereum is a decentralized, open-source blockchain featuring smart contract functionality. Ether is the native cryptocurrency of the platform. It is the second-largest cryptocurrency by market capitalization, after Bitcoin. Ethereum is the most actively used blockchain.",
