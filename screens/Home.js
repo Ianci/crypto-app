@@ -6,6 +6,7 @@
 /* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
 import {StyleSheet, View, Text, TouchableOpacity, Image, ImageBackground, FlatList, ScrollView} from 'react-native';
+import PriceAlert from '../components/PriceAlert';
 import { COLORS, dummyData, SIZES, FONTS, icons, images } from '../constants';
 import { trendingCurrencies } from '../constants/dummy';
 
@@ -16,6 +17,7 @@ const Home = ({navigation}) => {
   
 
 
+  {/*Header Functional component*/}
   function renderHeader(props){
 
     const renderItem = ({item , index}) => (
@@ -26,19 +28,26 @@ const Home = ({navigation}) => {
         marginLeft: 10,
         borderRadius: 10,
         backgroundColor: COLORS.white,
+        
       }}>
         {/*Currency*/}
         <View>
           <Image
           source={item.image}
-          resizeMode="cover"
+          resizeMode='contain'
           style={{ marginTop: 5, width: 25, height: 25,
           }}
           />
           <View style={{flex: 1}}>
-          <Text >{item.currency}</Text>
-          <Text >{item.code}</Text>
+          <Text style={{fontSize: SIZES.h2, lineHeight: 30}}>{item.currency}</Text>
+          <Text style={{color: COLORS.gray, fontSize: SIZES.body3}}>{item.code}</Text>
           </View>
+        </View>
+
+        {/*Value*/}
+        <View style={styles.valueContainer}>
+          <Text style={styles.valueTextOne}>${item.amount}</Text>
+          <Text style={{color: item.type === 'I' ? COLORS.green : COLORS.red}}>{item.changes}</Text>
         </View>
 
       </TouchableOpacity>
@@ -86,10 +95,39 @@ const Home = ({navigation}) => {
       </View>
     )
   }
+
+  
+  function renderAlert(props){
+    return (
+      <PriceAlert />
+    )
+  }
+
+  function renderNotice(props){
+    return(
+      <View style={{
+        marginTop: SIZES.padding,
+        marginHorizontal: SIZES.padding,
+        padding: 20,
+        borderRadius: SIZES.radius,
+        backgroundColor: COLORS.secondary,
+        shadowColor: '#000',
+        
+      }}>
+        <Text>Investing safety</Text>
+        <Text>It's very difficult to time and investment,
+          especially when the market is volatile. Learn how to use dollar
+          cost averaging to your advantage.
+        </Text>
+      </View>
+    )
+  }
   return (
     <ScrollView>
       <View style={styles.container}>
         {renderHeader()}
+        {renderAlert()}
+        {renderNotice()}
       </View>
     </ScrollView>
   );
@@ -147,10 +185,20 @@ const styles = StyleSheet.create({
     bottom: '-30%',
   },  
   trendingText: {
-    color: COLORS.secondary,
+    color: COLORS.white,
+    paddingLeft: 5,
     fontFamily: 'Roboto-Bold', 
     fontSize: SIZES.h2, 
     lineHeight: 30 ,
+  },
+  valueContainer: {
+    marginTop: SIZES.radius
+  },
+  valueTextOne: {
+    fontFamily: "Roboto-Bold", 
+    fontSize: SIZES.h3, 
+    lineHeight: 24,
+    fontWeight: 'bold'
   },
 });
 
