@@ -15,7 +15,7 @@ const CurrencyLabel = ({icon, currency, code}) => {
             }}
             />
             <View style={{marginLeft: SIZES.base}}>
-                <Text style={{...FONTS.h3}}>{currency}</Text>
+                <Text style={{...FONTS.h3, fontWeight: 'bold'}}>{currency}</Text>
                 <Text style={{...FONTS.body4, color: COLORS.gray}}>{code}</Text>
             </View>
         </View>
