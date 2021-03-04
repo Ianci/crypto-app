@@ -4,7 +4,7 @@ import { TouchableOpacity, View, StyleSheet, Text, Image, FlatList,ScrollView, S
 
 
 const TransactionHistoryComponent = ( { transactionHistory }) => {
-    console.log(transactionHistory)
+    
 
     const renderItem = ({ item }) => {
         return(
