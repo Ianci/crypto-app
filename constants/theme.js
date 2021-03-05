@@ -14,7 +14,8 @@ export const COLORS = {
     red: "#F9A8BA",
     gray: "#6A6A6A",
     lightGray: "#dbdbdb",
-    lightGray1: "#f5f6fa"
+    lightGray1: "#f5f6fa",
+    fireOpal: '#F25F5C'
 };
 export const SIZES = {
     // global sizes

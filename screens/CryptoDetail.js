@@ -16,6 +16,8 @@ import { COLORS, dummyData, SIZES, FONTS, icons, images, SHADOWS } from '../cons
 import CurrencyLabel from '../components/CurrencyLabel';
 import { VictoryChart, VictoryAxis, VictoryScatter, VictoryLine } from 'victory-native'
 import { VictoryCustomTheme }from '../styles'
+import { ButtonComponent } from '../components/Button';
+import PriceAlert from '../components/PriceAlert';
 
 
 const CryptoDetail = ({ route, navigation }) => {
@@ -155,7 +157,7 @@ const CryptoDetail = ({ route, navigation }) => {
                     {/*Amount*/}
                         <View style={{flexDirection: 'row', alignItems: 'center'}}>
                             <View style={{marginRight: SIZES.radius}}>
-                            <Text>${selectedCurrency?.wallet.value}</Text>
+                            <Text style={{...FONTS.H4, fontWeight: 'bold'}}>${selectedCurrency?.wallet.value}</Text>
                             <Text>{selectedCurrency?.wallet.crypto} {selectedCurrency?.code}</Text>
                             </View>
                             <Image source={icons.right_arrow}
@@ -167,6 +169,31 @@ const CryptoDetail = ({ route, navigation }) => {
             
         )
     }
+
+    const renderBuyButton = () => {
+        return(
+            <ButtonComponent selectedCurrency={selectedCurrency}/>
+            )
+    }
+
+    const renderAboutSection = () => {
+        return(
+            <View style={{
+                flex: 1,
+                marginTop: SIZES.padding,
+                marginHorizontal: SIZES.base,
+                backgroundColor: COLORS.white,
+                padding: 10,
+                borderRadius: SIZES.radius,
+                ...SHADOWS.generic
+            }}>
+                <Text style={{...FONTS.h3, color: COLORS.black, fontWeight: 'bold'}}>About {selectedCurrency?.currency}</Text>
+                <Text style={{...FONTS.body4}}>{selectedCurrency?.description}</Text>
+            </View>
+        )
+    }
+
+   
     return (
        <SafeAreaView>
            <HeaderBar right={true}/>
@@ -174,6 +201,9 @@ const CryptoDetail = ({ route, navigation }) => {
                <View style={{flex: 1, paddingBottom: SIZES.padding}}>
                     {renderChart()}
                     {renderBuy()}
+                    {renderBuyButton()}
+                    {renderAboutSection()}
+                    
                </View>
            </ScrollView>
        </SafeAreaView>
