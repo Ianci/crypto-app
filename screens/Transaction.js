@@ -12,12 +12,13 @@ import { COLORS, dummyData, SIZES, FONTS, icons, images, SHADOWS } from '../cons
 import HeaderBar from '../components/HeaderBar';
 import CurrencyLabel from '../components/CurrencyLabel';
 import { ButtonComponent } from '../components/Button';
+import TransactionHistoryComponent from '../components/TransactionHistory';
 
 
 const Transaction = ({ navigation, route }) => {
 
     const [ selectedCurrency, setSelectedCurrency ] = useState(null)
-   
+    const [ transactionHistory, setTransanctionHistory] = useState(dummyData.transactionHistory)
 
 
     useEffect(() => {
@@ -58,12 +59,24 @@ const Transaction = ({ navigation, route }) => {
             </View>
         )
     }
+
+    function renderTransactionHistory(){
+        return(
+          <TransactionHistoryComponent 
+          transactionHistory={transactionHistory}
+          />
+          
+        )
+          
+      }
+
     return(
         <SafeAreaView>
             <HeaderBar right={true}/>
             <ScrollView>
                 <View style={{flex: 1, paddingBottom: SIZES.padding}}>
                     {renderTradeCryptoComponent()}
+                    {renderTransactionHistory()}
                 </View>
             </ScrollView>
         </SafeAreaView>

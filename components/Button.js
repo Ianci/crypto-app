@@ -12,7 +12,7 @@ export const ButtonComponent = ({ title, onPress }) => {
             flex: 1,
             marginTop: SIZES.padding,
             marginHorizontal: SIZES.base,
-            padding: 20,
+            padding: 15,
             backgroundColor: COLORS.fireOpal,
             borderRadius: SIZES.radius,
             ...SHADOWS.generic

@@ -41,6 +41,7 @@ const TransactionHistoryComponent = ( { transactionHistory }) => {
                 flex: 1,
                 marginTop: SIZES.padding,
                 marginHorizontal: SIZES.padding,
+                marginBottom: SIZES.padding * 1.5,
                 padding: 20,
                 borderRadius: SIZES.radius,
                 backgroundColor: COLORS.white,
