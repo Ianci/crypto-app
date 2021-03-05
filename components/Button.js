@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, Button, View, TouchableOpacity } from 'react-native'
 import { COLORS, SIZES, FONTS, icons, SHADOWS } from '../constants';
 import { useNavigation } from '@react-navigation/native'
-export const ButtonComponent = ({ selectedCurrency }) => {
+export const ButtonComponent = ({ title, onPress }) => {
 
     const navigation = useNavigation()
 
@@ -17,9 +17,9 @@ export const ButtonComponent = ({ selectedCurrency }) => {
             borderRadius: SIZES.radius,
             ...SHADOWS.generic
         }}
-        onPress={() => navigation.navigate('Transaction', { currency: selectedCurrency })}>
+        onPress={onPress}>
         <View style={{alignItems: 'center'}}>
-            <Text style={{...FONTS.h2, fontWeight: 'bold', color: COLORS.white}}>Buy Now</Text>
+            <Text style={{...FONTS.h2, fontWeight: 'bold', color: COLORS.white}}>{title}</Text>
         </View>
         </TouchableOpacity>
     )

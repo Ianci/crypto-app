@@ -172,7 +172,11 @@ const CryptoDetail = ({ route, navigation }) => {
 
     const renderBuyButton = () => {
         return(
-            <ButtonComponent selectedCurrency={selectedCurrency}/>
+            <ButtonComponent 
+            selectedCurrency={selectedCurrency} 
+            title='Buy Now'
+            onPress={() => navigation.navigate('Transaction', {currency: selectedCurrency})}
+            />
             )
     }
 
